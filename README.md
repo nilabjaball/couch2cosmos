@@ -1,9 +1,10 @@
-###### Couch 2 Cosmos
-Couchbase to  ComosDB Migration 
+# Couch 2 Cosmos
+
+##Couchbase to  ComosDB Migration 
 
 Cosmos DB is an Azure  Nosql service that is globally distributed, horizontally scalable, multi-model supporting key-value, managed Document, Graph and Columnar. 
 
-Method 1 
+###Method 1 
 
 Azure Data Factory 
 The Azure Data Factory (ADF) service is a fully managed service for composing data storage, processing, and movement services into streamlined, scalable, and reliable data production pipelines.  
@@ -112,7 +113,7 @@ When you create the couchbase table as dataset, the json output becomes
 }
 •	ID column is transferred as PK in CosmosDB SQL API
 
-Method 2
+### Method 2
 
 CBexport  is an utility for exporting data from a Couchbase cluster. This utility is available in Couchbase enterprise edition.
 
