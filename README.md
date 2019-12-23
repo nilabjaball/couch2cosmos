@@ -33,7 +33,7 @@ https://docs.microsoft.com/en-us/azure/data-factory/create-self-hosted-integrati
  
 For data migration, you need to host an additional VM  either in the same private network or in the on-premise data center with access to the Couchbase database.  In addition, you need to open 8091 and 9093 port between the SHIR VM and the Couchbase server. If you are running on a cluster, it is suggested to open at least on the cluster virtual IP or one of the cluster node.
 
-Linked Services 
+#### Linked Services 
 
 Linked services are much like connection strings, which define the connection information that's needed for Data Factory to connect to external resources.
 For data migration, a Couchbase linked services and Cosmos DB SQL API needs to be created. 
@@ -85,13 +85,14 @@ Use the port used for REST API. The default is 8093.
  Get the Endpointurl, accesskey and Database name from key section of Cosmos DB resource page.
 
 ```
-Dataset 
+#### Dataset 
+
 Datasets represent data structures within the data stores, which simply point to or reference the data you want to use in your activities as inputs or outputs.  For data migration, a couchbase and cosmos DB dataset needs to be created. 
 •	couchabase , under the table, select the bucket that needs to be migrated to CosmosDB
  
 •	Another dataset needs to be created that points to CosmosDB linked service. Select a collection that will be used as the destination 
  
-Pipeline 
+#### Pipeline 
 
 A pipeline is a logical grouping of activities that performs a unit of work. Activities represent a processing step in a pipeline. The only activity that needs to be done is a copy operation. 
 •	Go to pipeline and click on create pipeline.
@@ -126,7 +127,10 @@ CBexport  is an utility for exporting data from a Couchbase cluster. This utilit
 Cbexport json command exports JSON from a Couchbase cluster. This command either exports JSON documents to a file with a document on each line or exports a file that contain a JSON list where each element is a document.
 For Migration, the list option is preferred. The list format contains a JSON list where each element in the list is a JSON document. 
 
+```
 cbexport json -c couchbase://<cluster IP> -u <user name> -p password \ -b <bucket name > -o <filepath\filename>.json -f list
+
+```
 Once the data is exported, you can import the json using two methods 
 a.	Copy data using Azure Data Factory 
 b.	Import using Data Migration Tool
