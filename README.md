@@ -42,6 +42,8 @@ For data migration, a Couchbase linked services and Cosmos DB SQL API needs to b
  
 •	Use the below json to create the couchbase linked service
 
+```
+
 {
     "name": "<Linked Service Name>",
     "type": "Microsoft.DataFactory/factories/linkedservices",
@@ -82,6 +84,7 @@ Use the port used for REST API. The default is 8093.
 
  Get the Endpointurl, accesskey and Database name from key section of Cosmos DB resource page.
 
+```
 Dataset 
 Datasets represent data structures within the data stores, which simply point to or reference the data you want to use in your activities as inputs or outputs.  For data migration, a couchbase and cosmos DB dataset needs to be created. 
 •	couchabase , under the table, select the bucket that needs to be migrated to CosmosDB
@@ -99,7 +102,8 @@ Select Source and Couchbase data set and Sink as CosmosDB dataset.
 You can either add a trigger and do run now or select a schedule as per your choice of time window.
 Observations 
 •	 During data copy,  data copy might fail with “Request rate is large” error. Increase the RU of cosmosDB for bulk copy of the JSON. Once the data copy is done, you can scale down the Cosmos DB RU size
-•	The shape of the JSON is flattened when copied using Azure data factory.  
+•	The shape of the JSON is flattened when copied using Azure data factory. 
+```
   {
 "name"
               { "firstname":"xyz",
@@ -111,6 +115,8 @@ When you create the couchbase table as dataset, the json output becomes
 "Name_firstname": "xyz",
 "Name_lastname" : "abc"
 }
+
+```
 •	ID column is transferred as PK in CosmosDB SQL API
 
 ### Method 2
